@@ -1,5 +1,5 @@
-use std::fmt::format;
-use anyhow::Error;
+
+
 use serde::{Deserialize, Serialize};
 use spin_sdk::key_value::Store;
 
@@ -14,17 +14,6 @@ const SYSTEM_INSTRUCTION: &str = r#"
 You are an AI sidekick to help users with extending their knowledge about geography.
 Keep your answers as short as possible.
 "#;
-
-/*
-
-request -> text
---> 1st interaction?
---> create or load convo
---> get prompt()
---> register_interaction(input, output)
---> store convo
-
- */
 
 impl Conversation {
     pub fn new(id: String) -> Self {
@@ -48,7 +37,7 @@ impl Conversation {
 
     pub fn store(&self) -> anyhow::Result<()> {
         let store = Store::open_default()?;
-        store.set_json(&self.id, self);
+        let _ = store.set_json(&self.id, self);
         Ok(())
     }
 
@@ -61,10 +50,10 @@ impl Conversation {
     }
 
     pub fn add_interaction(&mut self, input: &str, output: &str) {
-        self.interactions.push((Interaction {
+        self.interactions.push(Interaction {
             input: input.to_string(),
             output: output.to_string(),
-        }))
+        })
     }
 }
 

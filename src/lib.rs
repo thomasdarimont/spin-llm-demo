@@ -1,5 +1,5 @@
-use http::HeaderValue;
-use spin_sdk::http::{IntoResponse, Json, Params, Request, Response, ResponseBuilder, Router};
+
+use spin_sdk::http::{IntoResponse, Json, Params, Request, ResponseBuilder, Router};
 use spin_sdk::http_component;
 use spin_sdk::llm;
 use spin_sdk::llm::InferencingModel;
