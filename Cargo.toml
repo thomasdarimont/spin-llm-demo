@@ -1,0 +1,18 @@
+[package]
+name = "spin-llm-demo"
+authors = ["Thomas Darimont <thomas.darimont@googlemail.com>"]
+description = ""
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = [ "cdylib" ]
+
+[dependencies]
+anyhow = "1"
+http = "0.2"
+spin-sdk = { git = "https://github.com/fermyon/spin", tag = "v2.0.1" }
+serde = { version = "1.0.193", features = ["derive"] }
+uuid = { version = "1.6.1", features = ["v4"] }
+
+[workspace]

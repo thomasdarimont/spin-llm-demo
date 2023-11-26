@@ -1,0 +1,20 @@
+ spin_manifest_version = 2
+
+[application]
+name = "spin-llm-demo"
+version = "0.1.0"
+authors = ["Thomas Darimont <thomas.darimont@googlemail.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/"
+component = "spin-llm-demo"
+
+[component.spin-llm-demo]
+source = "target/wasm32-wasi/release/spin_llm_demo.wasm"
+allowed_outbound_hosts = []
+ai_models = ["llama2-chat"]
+key_value_stores = ["default"]
+[component.spin-llm-demo.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
