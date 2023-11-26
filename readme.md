@@ -24,3 +24,33 @@ cargo add uuid -F v4
 # Run
 
 `spin deploy`
+
+# Run locally with cloud gpu backend
+
+spin cloud-gpu init
+
+copy generated toml to file `cloud-gpu.toml` (do not check this file in - auth token inside!).
+
+Run spin with `spin up --runtime-config-file cloud-gpu.toml`
+
+Start conversation:
+```
+curl -v -d '{"text":"What is the biggest city in europe by population?"}' http://localhost:3000/
+```
+
+Output:
+```
+London.%
+```
+
+Extract `x-conversationid` header.
+
+Start conversation:
+```
+curl -v -H "x-conversationid: 9adacc40-7fc9-4d6c-9deb-cae00531659a" -d '{"text":"How many people live there?"}' http://localhost:3000/
+```
+
+Output:
+```
+8.9 million.
+```
